@@ -1,5 +1,6 @@
 package com.shubhamyadav.lil.learningspring.web;
 
+import com.shubhamyadav.lil.learningspring.business.ReservationService;
 import com.shubhamyadav.lil.learningspring.data.Guest;
 import com.shubhamyadav.lil.learningspring.data.GuestRepository;
 import org.springframework.stereotype.Controller;
@@ -12,15 +13,15 @@ import java.util.List;
 @Controller
 @RequestMapping("/guests")
 public class GuestController {
-    private final GuestRepository guestRepository;
+    private final ReservationService reservationService;
 
-    public GuestController(GuestRepository guestRepository) {
-        this.guestRepository = guestRepository;
+    public GuestController(ReservationService reservationService) {
+        this.reservationService = reservationService;
     }
 
     @RequestMapping(method = RequestMethod.GET)
     public String getGuests(Model model) {
-        List<Guest> guests = this.guestRepository.findAll();
+        List<Guest> guests = this.reservationService.getHotelGuests();
         model.addAttribute("guests", guests);
         return "guests";
     }
