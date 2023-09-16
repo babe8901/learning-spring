@@ -66,4 +66,25 @@ public class ReservationService {
         });
         return guests;
     }
+
+    public List<Room> getHotelRooms() {
+        List <Room> rooms = this.roomRepository.findAll();
+        rooms.sort(new Comparator<Room>() {
+            @Override
+            public int compare(Room o1, Room o2) {
+                if (o1.getName().equals(o2.getName())) {
+                    return o1.getRoomNumber().compareTo(o2.getRoomNumber());
+                }
+                return o1.getName().compareTo(o2.getName());
+            }
+        });
+        return rooms;
+    }
+
+    public void addGuest(Guest guest) {
+        if (guest == null) {
+            throw new RuntimeException("Guest cannot be null");
+        }
+        this.guestRepository.save(guest);
+    }
 }

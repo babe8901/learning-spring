@@ -2,7 +2,6 @@ package com.shubhamyadav.lil.learningspring.web;
 
 import com.shubhamyadav.lil.learningspring.business.ReservationService;
 import com.shubhamyadav.lil.learningspring.data.Guest;
-import com.shubhamyadav.lil.learningspring.data.GuestRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
